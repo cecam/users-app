@@ -1,6 +1,10 @@
 import { useState } from 'react'
+
+import CurrentUserProvider from './context/CurrentUserContext'
+
 import Header from './components/Header'
 import Table from './components/Table'
+import Modal from './components/Modal'
 
 import { useUsers } from './hooks/useUsers'
 
@@ -17,7 +21,7 @@ function App() {
 	const [tableColor, setTableColor] = useState<boolean>(true)
 
 	return (
-		<>
+		<CurrentUserProvider>
 			<Header
 				filter={filter}
 				setFilter={setFilter}
@@ -25,13 +29,16 @@ function App() {
 				sortByCountry={sortUsersByCountry}
 				setTableColor={setTableColor}
 			/>
+			<div className='h-full overflow-y-auto'>
+				<Table
+					users={filteredUsers}
+					deleteUsers={deleteUsers}
+					tableColor={tableColor}
+				/>
+			</div>
 
-			<Table
-				users={filteredUsers}
-				deleteUsers={deleteUsers}
-				tableColor={tableColor}
-			/>
-		</>
+			<Modal />
+		</CurrentUserProvider>
 	)
 }
 
