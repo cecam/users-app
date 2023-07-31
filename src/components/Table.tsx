@@ -5,7 +5,7 @@ import { CurrentUserContext } from '../context/CurrentUserContext'
 
 import Button from './Button'
 
-interface TableProps {
+export interface TableProps {
 	users: User[]
 	tableColor: boolean
 	deleteUsers: (id: string) => void
