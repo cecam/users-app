@@ -1,15 +1,68 @@
-import { render, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { vi } from 'vitest'
 import Modal from '../../components/Modal'
 import { CurrentUserContext } from '../../context/CurrentUserContext'
+import { User } from '../../types/userTypes'
 
 // Mock the CurrentUserContext with a test value
 const testUser = {
-	name: { first: 'John', last: 'Doe' },
-	location: { country: 'USA' },
-	picture: { large: 'thumbnail-url' },
+	gender: 'female',
+	name: {
+		title: 'Ms',
+		first: 'John',
+		last: 'Doe',
+	},
+	location: {
+		street: {
+			number: 4358,
+			name: 'Rua Minas Gerais ',
+		},
+		city: 'Niterói',
+		state: 'Rondônia',
+		country: 'USA',
+		postcode: 10538,
+		coordinates: {
+			latitude: '-79.0412',
+			longitude: '171.2049',
+		},
+		timezone: {
+			offset: '-9:00',
+			description: 'Alaska',
+		},
+	},
+	email: 'sara.mendes@example.com',
+	login: {
+		uuid: 'd9b2669c-00ae-4315-a066-97f2ef637542',
+		username: 'happymeercat500',
+		password: 'goth',
+		salt: 'dQ6nfuPc',
+		md5: 'e2d56b7245f13ab9da22015917e8dedd',
+		sha1: '138448a20d1ebe810819ddb28610b9e64880cd06',
+		sha256: '439dd9f5259198a5793b151111dcfc5b3b9188a96814ee789bb8e7832fbc41ae',
+	},
+	dob: {
+		date: '1998-01-05T03:57:10.313Z',
+		age: 25,
+	},
+	registered: {
+		date: '2004-12-18T14:07:20.014Z',
+		age: 18,
+	},
+	phone: '(93) 2432-1691',
+	cell: '(70) 2408-5126',
+	id: {
+		name: 'CPF',
+		value: '104.591.282-34',
+	},
+	picture: {
+		large: 'https://randomuser.me/api/portraits/women/88.jpg',
+		medium: 'https://randomuser.me/api/portraits/med/women/88.jpg',
+		thumbnail: 'https://randomuser.me/api/portraits/thumb/women/88.jpg',
+	},
+	nat: 'BR',
 }
-const setCurrentUserMock = vi.fn()
+const setCurrentUserMock: React.Dispatch<React.SetStateAction<User | null>> =
+	vi.fn()
 
 const mockCurrentUserContext = {
 	currentUser: testUser,

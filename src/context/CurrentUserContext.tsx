@@ -1,9 +1,17 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, ReactNode } from 'react'
 import { User } from '../types/userTypes'
 
-export const CurrentUserContext = createContext({})
+interface CurrentUserContextProps {
+	currentUser: User | null
+	setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>
+}
 
-const CurrentUserProvider = ({ children }: { children: React.ReactNode }) => {
+export const CurrentUserContext = createContext<CurrentUserContextProps>({
+	currentUser: null,
+	setCurrentUser: () => null,
+})
+
+const CurrentUserProvider = ({ children }: { children: ReactNode }) => {
 	const [currentUser, setCurrentUser] = useState<User | null>(null)
 
 	return (

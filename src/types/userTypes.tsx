@@ -2,7 +2,7 @@ export interface User {
 	cell: string
 	dob: Dob
 	email: string
-	gender: Gender
+	gender: string
 	id: ID
 	location: Location
 	login: Login
@@ -40,12 +40,7 @@ interface Timezone {
 
 interface Dob {
 	age: number
-	date: Date
-}
-
-enum Gender {
-	Female = 'female',
-	Male = 'male',
+	date: string
 }
 
 interface ID {
@@ -66,16 +61,7 @@ interface Login {
 interface Name {
 	first: string
 	last: string
-	title: Title
-}
-
-enum Title {
-	MS = 'Ms',
-	Mademoiselle = 'Mademoiselle',
-	Miss = 'Miss',
-	Monsieur = 'Monsieur',
-	Mr = 'Mr',
-	Mrs = 'Mrs',
+	title: string
 }
 
 interface Picture {
