@@ -9,9 +9,19 @@ interface TableProps {
 	users: User[]
 	tableColor: boolean
 	deleteUsers: (id: string) => void
+	sortUsersByNames: () => void
+	sortUsersByLastName: () => void
+	sortUsersByCountry: () => void
 }
 
-const Table: FC<TableProps> = ({ users, tableColor, deleteUsers }) => {
+const Table: FC<TableProps> = ({
+	users,
+	tableColor,
+	deleteUsers,
+	sortUsersByNames,
+	sortUsersByLastName,
+	sortUsersByCountry,
+}) => {
 	const { setCurrentUser } = useContext(CurrentUserContext)
 
 	return (
@@ -20,14 +30,11 @@ const Table: FC<TableProps> = ({ users, tableColor, deleteUsers }) => {
 				<thead className='text-white'>
 					<tr>
 						<th>Avatar</th>
-						<th onClick={() => sortUsersByHeaders('name.first')}>Name</th>
-						<th
-							onClick={() => sortUsersByHeaders('name.first')}
-							className='hidden md:block'
-						>
+						<th onClick={() => sortUsersByNames()}>Name</th>
+						<th onClick={sortUsersByLastName} className='hidden md:block'>
 							Lastname
 						</th>
-						<th onClick={() => sortUsersByHeaders('name.first')}>Country</th>
+						<th onClick={sortUsersByCountry}>Country</th>
 						<th>Actions</th>
 					</tr>
 				</thead>

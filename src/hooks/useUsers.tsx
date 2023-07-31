@@ -22,26 +22,31 @@ export const useUsers = () => {
 		return user.location.country.toLowerCase().includes(filter.toLowerCase())
 	}
 
+	const sortUsersByName = () => {
+		const sortedUsers = [...filteredUsers].sort((a, b) =>
+			a.name.first.localeCompare(b.name.first),
+		)
+		setFilteredUsers(sortedUsers)
+	}
+
+	const sortUsersByLastName = () => {
+		const sortedUsers = [...filteredUsers].sort((a, b) =>
+			a.name.last.localeCompare(b.name.last),
+		)
+		setFilteredUsers(sortedUsers)
+	}
+
 	const sortUsersByCountry = () => {
-		const sortedUsers = users.sort((a, b) => {
-			if (a.location.country > b.location.country) {
-				return 1
-			}
-
-			if (a.location.country < b.location.country) {
-				return -1
-			}
-
-			return 0
-		})
-
+		const sortedUsers = [...filteredUsers].sort((a, b) =>
+			a.location.country.localeCompare(b.location.country),
+		)
 		setFilteredUsers(sortedUsers)
 	}
 
 	useEffect(() => {
-		const filteredUsers = users.filter(filterByCountry)
+		const newFilteredUsers = users.filter(filterByCountry)
 
-		setFilteredUsers(filteredUsers)
+		setFilteredUsers(newFilteredUsers)
 	}, [filter, users])
 
 	useEffect(() => {
@@ -67,6 +72,8 @@ export const useUsers = () => {
 		resetUsers,
 		deleteUsers,
 		setFilter,
+		sortUsersByName,
+		sortUsersByLastName,
 		sortUsersByCountry,
 	}
 }

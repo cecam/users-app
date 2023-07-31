@@ -17,6 +17,8 @@ function App() {
 		resetUsers,
 		filteredUsers,
 		deleteUsers,
+		sortUsersByName,
+		sortUsersByLastName,
 		sortUsersByCountry,
 	} = useUsers()
 
@@ -40,6 +42,9 @@ function App() {
 						users={filteredUsers}
 						deleteUsers={deleteUsers}
 						tableColor={tableColor}
+						sortUsersByNames={sortUsersByName}
+						sortUsersByLastName={sortUsersByLastName}
+						sortUsersByCountry={sortUsersByCountry}
 					/>
 				</div>
 
