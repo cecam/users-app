@@ -7,8 +7,6 @@ import { CurrentUserContext } from '../context/CurrentUserContext'
 const Modal: FC = () => {
 	const { currentUser, setCurrentUser } = useContext(CurrentUserContext)
 
-	console.log(currentUser)
-
 	return (
 		<AnimatePresence>
 			{currentUser && (

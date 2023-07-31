@@ -1,8 +1,6 @@
 import { FC, Dispatch, SetStateAction } from 'react'
 import Button from './Button'
 
-import { User } from '../types/userTypes'
-
 interface IProps {
 	filter: string
 	setFilter: (filter: string) => void

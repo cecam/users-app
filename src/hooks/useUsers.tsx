@@ -46,10 +46,15 @@ export const useUsers = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(API_URL)
-			const data = await response.json()
+			try {
+				const response = await fetch(API_URL)
+				const data = await response.json()
 
-			setUsers(data.results)
+				setUsers(data.results)
+				setFilteredUsers(data.results)
+			} catch (error) {
+				throw new Error('Error fetching users')
+			}
 		}
 
 		fetchData()

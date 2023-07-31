@@ -20,9 +20,14 @@ const Table: FC<TableProps> = ({ users, tableColor, deleteUsers }) => {
 				<thead className='text-white'>
 					<tr>
 						<th>Avatar</th>
-						<th>Name</th>
-						<th className='hidden md:block'>Lastname</th>
-						<th>Country</th>
+						<th onClick={() => sortUsersByHeaders('name.first')}>Name</th>
+						<th
+							onClick={() => sortUsersByHeaders('name.first')}
+							className='hidden md:block'
+						>
+							Lastname
+						</th>
+						<th onClick={() => sortUsersByHeaders('name.first')}>Country</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
