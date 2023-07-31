@@ -38,6 +38,8 @@ The app was developed using the following technologies:
 
 - ReactJS: A JavaScript library used to create the user interface of the application.
 
+- TypeScript: A statically typed superset of JavaScript that enhances code readability and reliability.
+
 - Vite: A build tool that serves as the development server for the application, providing fast refresh and other features.
 
 - Tailwind CSS: A utility-first CSS framework used for styling the application, enabling rapid UI development.
